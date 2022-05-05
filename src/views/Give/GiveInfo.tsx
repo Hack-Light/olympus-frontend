@@ -14,13 +14,13 @@ export function GiveInfo() {
             The style override works around an inability to override the grid container */}
         <Grid container className={"give-info"} style={isLargeScreen ? { flexWrap: "nowrap" } : undefined}>
           <Grid item className="give-info-deposit-box">
-            <DepositSohm message={t`Deposit sOHM from wallet`} />
+            <DepositSohm message={t`Deposit sORCL from wallet`} />
           </Grid>
           <Grid item className="give-info-vault-box">
-            <LockInVault message={t`Lock sOHM in vault`} />
+            <LockInVault message={t`Lock sORCLin vault`} />
           </Grid>
           <Grid item className="give-info-yield-box">
-            <ReceivesYield message={t`Recipient earns sOHM rebases`} />
+            <ReceivesYield message={t`Recipient earns sORCL rebases`} />
           </Grid>
         </Grid>
         <Box className="button-box">

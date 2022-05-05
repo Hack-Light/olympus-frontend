@@ -37,7 +37,7 @@ export const OHMPrice = () => {
 
   const props: MetricProps = {
     ...sharedProps,
-    label: t`OHM Price`,
+    label: t`ORCL Price`,
   };
 
   if (ohmPrice) props.metric = formatCurrency(ohmPrice, 2);
@@ -67,7 +67,7 @@ export const BackingPerOHM = () => {
 
   const props: MetricProps = {
     ...sharedProps,
-    label: t`Backing per OHM`,
+    label: t`Backing per ORCL`,
   };
 
   if (treasuryValue && circSupply) props.metric = formatCurrency(treasuryValue / circSupply, 2);
@@ -82,10 +82,10 @@ export const CurrentIndex = () => {
   const props: MetricProps = {
     ...sharedProps,
     label: t`Current Index`,
-    tooltip: t`The current index tracks the amount of sOHM accumulated since the beginning of staking. Basically, how much sOHM one would have if they staked and held 1 OHM from launch.`,
+    tooltip: t`The current index tracks the amount of sORCL accumulated since the beginning of staking. Basically, how much sORCL one would have if they staked and held 1 ORCL from launch.`,
   };
 
-  if (currentIndex) props.metric = `${parseBigNumber(currentIndex, STAKING_CONTRACT_DECIMALS).toFixed(2)} sOHM`;
+  if (currentIndex) props.metric = `${parseBigNumber(currentIndex, STAKING_CONTRACT_DECIMALS).toFixed(2)} sORCL`;
   else props.isLoading = true;
 
   return <Metric {...props} />;
@@ -96,12 +96,12 @@ export const GOHMPrice = () => {
 
   const props: MetricProps = {
     ...sharedProps,
-    label: t`gOHM Price`,
+    label: t`gORCL Price`,
     className: "wsoprice",
     tooltip:
-      t`gOHM = sOHM * index` +
+      t`gORCL = sORCL * index` +
       "\n\n" +
-      t`The price of gOHM is equal to the price of OHM multiplied by the current index`,
+      t`The price of gORCL is equal to the price of ORCL multiplied by the current index`,
   };
 
   if (gOhmPrice) props.metric = formatCurrency(gOhmPrice, 2);

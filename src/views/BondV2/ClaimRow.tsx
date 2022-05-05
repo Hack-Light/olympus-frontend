@@ -49,7 +49,7 @@ export function ClaimBondTableData({ userNote, gOHM }: { userNote: IUserNote; gO
       {/* Payout */}
       <TableCell align="center">
         {note.payout && currentIndex ? (
-          trim(note.payout * (gOHM ? 1 : Number(currentIndex)), 4) + (gOHM ? " gOHM" : " sOHM")
+          trim(note.payout * (gOHM ? 1 : Number(currentIndex)), 4) + (gOHM ? " gORCL" : " sORCL")
         ) : (
           <Skeleton width={100} />
         )}
@@ -106,7 +106,7 @@ export function ClaimBondCardData({ userNote, gOHM }: { userNote: IUserNote; gOH
         <Typography>Claimable</Typography>
         <Typography>
           {note.payout && currentIndex ? (
-            trim(note.payout * (gOHM ? 1 : Number(currentIndex)), 4) + (gOHM ? " gOHM" : " sOHM")
+            trim(note.payout * (gOHM ? 1 : Number(currentIndex)), 4) + (gOHM ? " gORCL" : " sORCL")
           ) : (
             <Skeleton width={100} />
           )}

@@ -581,7 +581,7 @@ exports[`<Root/> should render component 1`] = `
                                     d="M 12.143 16.236 C 15.041 15.357 17.143 12.743 17.143 9.655 C 17.143 5.846 13.945 2.759 10 2.759 C 6.055 2.759 2.857 5.846 2.857 9.655 C 2.857 12.743 4.959 15.357 7.857 16.236 L 7.857 20 L 0 20 L 0 17.241 L 3.814 17.241 C 1.491 15.473 0 12.732 0 9.655 C 0 4.323 4.477 0 10 0 C 15.523 0 20 4.323 20 9.655 C 20 12.732 18.509 15.473 16.186 17.241 L 20 17.241 L 20 20 L 12.143 20 L 12.143 16.236 Z"
                                   />
                                 </svg>
-                                Olympus Pro
+                                Oracle Pro
                                 <svg
                                   aria-hidden="true"
                                   class="MuiSvgIcon-root-338 external-site-link-icon MuiSvgIcon-fontSizeSmall-345"

@@ -27,7 +27,7 @@ import { IBondDetails } from "src/slices/BondSlice";
 import { getAllBonds, getUserNotes } from "src/slices/BondSliceV2";
 import { DisplayBondDiscount } from "src/views/BondV2/BondV2";
 
-import { ReactComponent as OlympusIcon } from "../../assets/icons/olympus-nav-header.svg";
+import { ReactComponent as OlympusIcon } from "../../assets/icons/image2vector.svg";
 import useBonds from "../../hooks/useBonds";
 import WalletAddressEns from "../TopBar/Wallet/WalletAddressEns";
 import externalUrls from "./externalUrls";
@@ -83,8 +83,9 @@ const NavContent: React.FC<NavContentProps> = ({ handleDrawerToggle }) => {
               <SvgIcon
                 color="primary"
                 component={OlympusIcon}
-                viewBox="0 0 151 100"
-                style={{ minWidth: "151px", minHeight: "98px", width: "151px" }}
+                viewBox="0 0  400 247.108"
+                style={{ minWidth: "151px", minHeight: "98px", width: "151px", transform : "scale(1.5)" }}
+                
               />
             </Link>
             <WalletAddressEns />
@@ -140,6 +141,7 @@ const NavContent: React.FC<NavContentProps> = ({ handleDrawerToggle }) => {
                     <NavItem to="/give" icon="give" label={t`Give`} chip={t`New`} />
                   )}
                   <NavItem to="/wrap" icon="wrap" label={t`Wrap`} />
+                  <NavItem to="/ico" icon="wrap" label={t`ICO`} />
                   <NavItem
                     href={"https://synapseprotocol.com/?inputCurrency=gOHM&outputCurrency=gOHM&outputChain=43114"}
                     icon="bridge"
@@ -148,7 +150,7 @@ const NavContent: React.FC<NavContentProps> = ({ handleDrawerToggle }) => {
                   <Box className="menu-divider">
                     <Divider />
                   </Box>
-                  <NavItem href="https://pro.olympusdao.finance/" icon="olympus" label={t`Olympus Pro`} />
+                  <NavItem href="https://pro.olympusdao.finance/" icon="olympus" label={t`Oracle Pro`} />
                   {/* <NavItem to="/33-together" icon="33-together" label={t`3,3 Together`} /> */}
                   <Box className="menu-divider">
                     <Divider />

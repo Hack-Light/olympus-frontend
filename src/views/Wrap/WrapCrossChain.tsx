@@ -21,8 +21,8 @@ function WrapCrossChain() {
   const dispatch = useDispatch();
   const { provider, address, networkId, networkName, connect } = useWeb3Context();
   const [quantity, setQuantity] = useState("");
-  const assetFrom = "wsOHM";
-  const assetTo = "gOHM";
+  const assetFrom = "wsORCL";
+  const assetTo = "gORCL";
 
   const isAppLoading = useAppSelector(state => state.app.loading || state.account.loading);
   const currentIndex =
@@ -95,10 +95,10 @@ function WrapCrossChain() {
 
   const chooseInputArea = () => {
     if (!address || isAppLoading) return <Skeleton width="80%" />;
-    if (!hasCorrectAllowance() && assetTo === "gOHM")
+    if (!hasCorrectAllowance() && assetTo === "gORCL")
       return (
         <div className="no-input-visible">
-          First time wrapping to <b>gOHM</b>?
+          First time wrapping to <b>gORCL</b>?
           <br />
           Please approve Olympus to use your <b>{assetFrom}</b> for this transaction.
         </div>
@@ -153,7 +153,7 @@ function WrapCrossChain() {
               aria-label="wsohm-wut"
               target="_blank"
             >
-              <Typography>gOHM</Typography> <Icon name="arrow-up" style={{ marginLeft: "5px" }} />
+              <Typography>gORCL</Typography> <Icon name="arrow-up" style={{ marginLeft: "5px" }} />
             </Link>
           }
         >
@@ -161,20 +161,20 @@ function WrapCrossChain() {
             <Grid item>
               <MetricCollection>
                 <Metric
-                  label={`sOHM ${t`Price`}`}
+                  label={`sORCL ${t`Price`}`}
                   metric={formatCurrency(sOhmPrice, 2)}
                   isLoading={sOhmPrice ? false : true}
                 />
                 <Metric
                   label={t`Current Index`}
-                  metric={`${trim(currentIndex, 1)} OHM`}
+                  metric={`${trim(currentIndex, 1)} ORCL`}
                   isLoading={currentIndex ? false : true}
                 />
                 <Metric
                   label={`${assetTo} Price`}
                   metric={formatCurrency(gOhmPrice, 2)}
                   isLoading={gOhmPrice ? false : true}
-                  tooltip={`${assetTo} = sOHM * index\n\nThe price of ${assetTo} is equal to the price of OHM multiplied by the current index`}
+                  tooltip={`${assetTo} = sORCL * index\n\nThe price of ${assetTo} is equal to the price of ORCL multiplied by the current index`}
                 />
               </MetricCollection>
             </Grid>
@@ -193,7 +193,7 @@ function WrapCrossChain() {
                     <Box style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
                       <Box height="32px">
                         <Typography>
-                          Transform <b>wsOHM</b> to <b>gOHM</b>
+                          Transform <b>wsORCL</b> to <b>gORCL</b>
                         </Typography>
                       </Box>
                     </Box>
@@ -206,13 +206,13 @@ function WrapCrossChain() {
                   </Box>
                   <div className={`stake-user-data`}>
                     <DataRow
-                      title={`${t`wsOHM Balance`} (${networkName})`}
-                      balance={`${trim(wsOhmBalance, 4)} wsOHM`}
+                      title={`${t`wsORCL Balance`} (${networkName})`}
+                      balance={`${trim(wsOhmBalance, 4)} wsORCL`}
                       isLoading={isAppLoading}
                     />
                     <DataRow
-                      title={`${t`gOHM Balance`} (${networkName})`}
-                      balance={`${trim(gohmBalance, 4)} gOHM`}
+                      title={`${t`gORCL Balance`} (${networkName})`}
+                      balance={`${trim(gohmBalance, 4)} gORCL`}
                       isLoading={isAppLoading}
                     />
                     <Divider />

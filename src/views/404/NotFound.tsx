@@ -9,7 +9,7 @@ export default function NotFound() {
     <div id="not-found">
       <div className="not-found-header">
         <a href="https://olympusdao.finance" target="_blank">
-          <img className="branding-header-icon" src={OlympusLogo} alt="OlympusDAO" />
+          <img className="branding-header-icon" src={OlympusLogo} alt="OracleDAO" />
         </a>
 
         <h4>

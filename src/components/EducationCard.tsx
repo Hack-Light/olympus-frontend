@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { t, Trans } from "@lingui/macro";
 import { Box, Typography } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
@@ -70,7 +71,7 @@ export function DepositSohm({ message }: GenericEducationGraphicProps) {
         </Typography>
         <Typography variant="body2" align="center" className="education-message" style={{ lineHeight: "16px" }}>
           <Trans>
-            Olympus Give is a means of directing the yield that is accrued on your sOHM to another wallet. The first
+            Oracle Give is a means of directing the yield that is accrued on your sOHM to another wallet. The first
             step is depositing your sOHM and specifying a recipient.
           </Trans>
         </Typography>

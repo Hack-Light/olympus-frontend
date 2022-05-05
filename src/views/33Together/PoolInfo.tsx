@@ -62,7 +62,7 @@ export const PoolInfo = (props: PoolInfoProps) => {
               />
               <DataRow
                 title={t`Your wallet balance`}
-                balance={`${props.sohmBalance} sOHM`}
+                balance={`${props.sohmBalance} sORCL`}
                 isLoading={props.isAccountLoading || props.graphLoading}
               />
             </Box>
@@ -78,16 +78,16 @@ export const PoolInfo = (props: PoolInfoProps) => {
           />
           <DataRow
             title={t`Total Deposits`}
-            balance={`${props.totalDeposits.toLocaleString()} sOHM`}
+            balance={`${props.totalDeposits.toLocaleString()} sORCL`}
             isLoading={props.graphLoading}
           />
           <DataRow
             title={t`Total Sponsorship`}
-            balance={`${props.totalSponsorship.toLocaleString()} sOHM`}
+            balance={`${props.totalSponsorship.toLocaleString()} sORCL`}
             isLoading={props.graphLoading}
           />
-          <DataRow title={t`Yield Source`} balance="sOHM" />
-          <DataRow title={t`Pool owner`} balance="OlympusDAO" />
+          <DataRow title={t`Yield Source`} balance="sORCL" />
+          <DataRow title={t`Pool owner`} balance="OracleDAO" />
           <Divider color="secondary" />
           <DataRow title={t`Early Exit Fee`} balance={`${creditLimitPercentage}%`} isLoading={poolLoadedCount === 1} />
           <DataRow
@@ -105,11 +105,11 @@ export const PoolInfo = (props: PoolInfoProps) => {
         </Box>
         <Box display="flex" flexDirection="row" justifyContent="center">
           <SecondaryButton href={poolTogetherUILinks(networkId)[0]}>
-            <Trans>sOHM Prize Pool</Trans>
+            <Trans>sORCL Prize Pool</Trans>
           </SecondaryButton>
           <div className="marginedBtn">
             <SecondaryButton href={poolTogetherUILinks(networkId)[1]}>
-              <Trans>sOHM Pool Details</Trans>
+              <Trans>sORCL Pool Details</Trans>
             </SecondaryButton>
           </div>
         </Box>

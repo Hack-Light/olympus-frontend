@@ -109,9 +109,9 @@ const Wrap: FC = () => {
     if (!hasCorrectAllowance() && assetTo === "gOHM")
       return (
         <div className="no-input-visible">
-          First time wrapping to <b>gOHM</b>?
+          First time wrapping to <b>gORCL</b>?
           <br />
-          Please approve Olympus to use your <b>{assetFrom}</b> for this transaction.
+          Please approve Oracle to use your <b>{assetFrom}</b> for this transaction.
         </div>
       );
     else if (!hasCorrectAllowance() && assetTo === "sOHM")
@@ -119,7 +119,7 @@ const Wrap: FC = () => {
         <div className="no-input-visible">
           First time unwrapping <b>{assetFrom}</b>?
           <br />
-          Please approve Olympus to use your <b>{assetFrom}</b> for unwrapping.
+          Please approve Oracle to use your <b>{assetFrom}</b> for unwrapping.
         </div>
       );
 
@@ -178,14 +178,14 @@ const Wrap: FC = () => {
                 aria-label="wsohm-wut"
                 target="_blank"
               >
-                <Typography>gOHM</Typography> <Icon style={{ marginLeft: "5px" }} name="arrow-up" />
+                <Typography>gORCL</Typography> <Icon style={{ marginLeft: "5px" }} name="arrow-up" />
               </Link>
             }
           >
             <Grid item style={{ padding: "0 0 2rem 0" }}>
               <MetricCollection>
                 <Metric
-                  label={`sOHM ${t`Price`}`}
+                  label={`sORCL ${t`Price`}`}
                   metric={formatCurrency(sOhmPrice, 2)}
                   isLoading={sOhmPrice ? false : true}
                 />
@@ -195,10 +195,10 @@ const Wrap: FC = () => {
                   isLoading={currentIndex ? false : true}
                 />
                 <Metric
-                  label={`gOHM ${t`Price`}`}
+                  label={`gORCL ${t`Price`}`}
                   metric={formatCurrency(gOhmPrice, 2)}
                   isLoading={gOhmPrice ? false : true}
-                  tooltip={`gOHM = sOHM * index\n\nThe price of gOHM is equal to the price of sOHM multiplied by the current index`}
+                  tooltip={`gORCL = sORCL * index\n\nThe price of gORCL is equal to the price of sORCL multiplied by the current index`}
                 />
               </MetricCollection>
             </Grid>
@@ -237,8 +237,8 @@ const Wrap: FC = () => {
                             onChange={changeAsset}
                             disableUnderline
                           >
-                            <MenuItem value={"sOHM"}>sOHM</MenuItem>
-                            <MenuItem value={"gOHM"}>gOHM</MenuItem>
+                            <MenuItem value={"sOHM"}>sORCL</MenuItem>
+                            <MenuItem value={"gOHM"}>gORCL</MenuItem>
                           </Select>
                         </FormControl>
 
@@ -262,8 +262,8 @@ const Wrap: FC = () => {
                             onChange={changeAsset}
                             disableUnderline
                           >
-                            <MenuItem value={"gOHM"}>gOHM</MenuItem>
-                            <MenuItem value={"sOHM"}>sOHM</MenuItem>
+                            <MenuItem value={"gOHM"}>gORCL</MenuItem>
+                            <MenuItem value={"sOHM"}>sORCL</MenuItem>
                           </Select>
                         </FormControl>
                       </>
@@ -278,19 +278,19 @@ const Wrap: FC = () => {
                   <div className={`stake-user-data`}>
                     <>
                       <DataRow
-                        title={t`sOHM Balance`}
-                        balance={`${trim(+sohmBalance, 4)} sOHM`}
+                        title={t`sORCL Balance`}
+                        balance={`${trim(+sohmBalance, 4)} sORCL`}
                         isLoading={isAppLoading}
                       />
                       <DataRow
-                        title={t`gOHM Balance`}
-                        balance={`${trim(+gohmBalance, 4)} gOHM`}
+                        title={t`gORCL Balance`}
+                        balance={`${trim(+gohmBalance, 4)} gORCL`}
                         isLoading={isAppLoading}
                       />
                       <Divider />
                       <Box width="100%" p={1} sx={{ textAlign: "center" }}>
                         <Typography variant="body1" style={{ margin: "15px 0 10px 0" }}>
-                          Got wsOHM on Avalanche or Arbitrum? Click below to switch networks and migrate to gOHM (no
+                          Got wsORCL on Avalanche or Arbitrum? Click below to switch networks and migrate to gORCL (no
                           bridge required!)
                         </Typography>
                         <Button onClick={handleSwitchChain(43114)} variant="outlined" style={{ margin: "0.3rem" }}>

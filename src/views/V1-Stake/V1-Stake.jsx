@@ -262,7 +262,7 @@ function V1Stake({ oldAssetsDetected, setMigrationModalOpen, hasActiveV1Bonds })
                               <>
                                 <Trans>First time unstaking</Trans> <b>sOHM</b>?
                                 <br />
-                                <Trans>Please approve Olympus Dao to use your</Trans> <b>sOHM </b>
+                                <Trans>Please approve Oracle Dao to use your</Trans> <b>sOHM </b>
                                 <Trans> for unstaking</Trans>.
                               </>
                             </Typography>

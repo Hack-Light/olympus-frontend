@@ -59,7 +59,7 @@ function BondPurchase({
           t`Max capacity is ${maxBondable} ${bond.displayName} for ${trim(
             +bond.maxPayoutOrCapacityInBase,
             4,
-          )} sOHM. Click Max to autocomplete.`,
+          )} sORCL. Click Max to autocomplete.`,
         ),
       );
     } else {
@@ -133,7 +133,7 @@ function BondPurchase({
                     <em>
                       <Typography variant="body1" align="center" color="textSecondary">
                         <Trans>First time bonding</Trans> <b>{bond.displayName}</b>? <br />{" "}
-                        <Trans>Please approve Olympus Dao to use your</Trans> <b>{bond.displayName}</b>{" "}
+                        <Trans>Please approve Oracle Dao to use your</Trans> <b>{bond.displayName}</b>{" "}
                         <Trans>for bonding</Trans>.
                       </Typography>
                     </em>
@@ -196,14 +196,14 @@ function BondPurchase({
             title={t`You Will Get`}
             balance={
               `${trim(Number(quantity) / bond.priceToken, 4) || "0"} ` +
-              `sOHM (≈${trim(+quantity / bond.priceToken / +currentIndex, 4) || "0"} gOHM)`
+              `sORCL (≈${trim(+quantity / bond.priceToken / +currentIndex, 4) || "0"} gORCL)`
             }
-            tooltip={t`The total amount of payout asset you will recieve from this bond purhcase. (sOHM amount will be higher due to rebasing)`}
+            tooltip={t`The total amount of payout asset you will recieve from this bond purhcase. (sORCL amount will be higher due to rebasing)`}
             isLoading={isBondLoading}
           />
           <DataRow
             title={t`Max You Can Buy`}
-            balance={`${trim(+bond.maxPayoutOrCapacityInBase, 4) || "0"} sOHM (≈${
+            balance={`${trim(+bond.maxPayoutOrCapacityInBase, 4) || "0"} sORCL (≈${
               trim(+bond.maxPayoutOrCapacityInQuote, 4) || "0"
             } ${bond.displayName})`}
             isLoading={isBondLoading}
@@ -212,7 +212,7 @@ function BondPurchase({
           <DataRow
             title={t`Discount`}
             balance={<DisplayBondDiscount key={bond.displayName} bond={bond} />}
-            tooltip={t`Negative discount is bad (you pay more than the market value). The bond discount is the percentage difference between OHM's market value and the bond's price.`}
+            tooltip={t`Negative discount is bad (you pay more than the market value). The bond discount is the percentage difference between ORCL's market value and the bond's price.`}
             isLoading={isBondLoading}
           />
 
@@ -231,7 +231,7 @@ function BondPurchase({
         <em>
           <Typography variant="body2">
             Important: New bonds are auto-staked (accrue rebase rewards) and no longer vest linearly. Simply claim as
-            sOHM or gOHM at the end of the term.
+            sORCL or gORCL at the end of the term.
           </Typography>
         </em>
       </div>

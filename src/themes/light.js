@@ -12,7 +12,7 @@ const lightTheme = {
   backgroundColor: "#AFCDE9",
   // background:
   // "radial-gradient(circle at 25% 0%, rgba(227,255,240,.5), rgba(227,255,240,0) 50%), radial-gradient(circle at 80% 80%, rgba(131,165,203,.5), rgba(131,165,203,0) 50%)",
-  background: "linear-gradient(180deg, #AFCDE9 1%, #F7FBE7 100%)",
+  background: "linear-gradient(180deg, #BFFFF0 1%, #F0FFC2 100%)",
   paperBg: "rgba(255, 255, 255, 0.6)",
   modalBg: "#FAFAFAEF",
   popoverBg: "rgba(255, 255, 255, 0.95)",

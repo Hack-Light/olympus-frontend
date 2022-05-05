@@ -283,12 +283,12 @@ export function ManageDonationModal({
 
     if (sOhmBalanceNumber.isEqualTo(0)) {
       setIsDepositAmountValid(false);
-      setIsDepositAmountValidError(t`You must have a balance of sOHM (staked OHM) to continue`);
+      setIsDepositAmountValidError(t`You must have a balance of sORCL (staked ORCL) to continue`);
     }
 
     if (valueNumber.isGreaterThan(getMaximumDepositAmount())) {
       setIsDepositAmountValid(false);
-      setIsDepositAmountValidError(t`Value cannot be more than your sOHM balance of ` + getMaximumDepositAmount());
+      setIsDepositAmountValidError(t`Value cannot be more than your sORCL balance of ` + getMaximumDepositAmount());
       return;
     }
 
@@ -425,7 +425,7 @@ export function ManageDonationModal({
                 {project ? project.depositGoal.toFixed(2) : "N/A"}
               </Typography>
               <Typography variant="body1" align="center" className="subtext">
-                {isSmallScreen ? "Goal" : "sOHM Goal"}
+                {isSmallScreen ? "Goal" : "sORCL Goal"}
               </Typography>
             </Box>
             <Box className="project-stats-box center-item">
@@ -433,7 +433,7 @@ export function ManageDonationModal({
                 {project ? parseFloat(totalDebt).toFixed(2) : "N/A"}
               </Typography>
               <Typography variant="body1" align="center" className="subtext">
-                {isSmallScreen ? "Total sOHM" : "Total sOHM Donated"}
+                {isSmallScreen ? "Total sORCL" : "Total sORCL Donated"}
               </Typography>
             </Box>
             <Box className="project-stats-box">
@@ -441,7 +441,7 @@ export function ManageDonationModal({
                 {project ? ((parseFloat(totalDonated) / project.depositGoal) * 100).toFixed(1) + "%" : "N/A"}
               </Typography>
               <Typography variant="body1" align="center" className="subtext">
-                {isSmallScreen ? "of Goal" : "of sOHM Goal"}
+                {isSmallScreen ? "of Goal" : "of sORCL Goal"}
               </Typography>
             </Box>
           </div>
@@ -472,13 +472,13 @@ export function ManageDonationModal({
                     <Typography variant="h6" className="row-title">
                       Deposited
                     </Typography>
-                    <Typography variant="h6">{depositAmount} sOHM</Typography>
+                    <Typography variant="h6">{depositAmount} sORCL</Typography>
                   </div>
                   <div className="details-row">
                     <Typography variant="h6" className="row-title">
                       Yield Sent
                     </Typography>
-                    <Typography variant="h6">{yieldSent} sOHM</Typography>
+                    <Typography variant="h6">{yieldSent} sORCL</Typography>
                   </div>
                 </div>
               </>
@@ -486,26 +486,26 @@ export function ManageDonationModal({
               <div className="details-row">
                 <div className="sohm-allocation-col">
                   <Typography variant="body1">
-                    <Trans>Current sOHM deposit</Trans>
+                    <Trans>Current sORCL deposit</Trans>
                   </Typography>
-                  <Typography variant="h6">{currentDepositAmount.toFixed(2)} sOHM</Typography>
+                  <Typography variant="h6">{currentDepositAmount.toFixed(2)} sORCL</Typography>
                 </div>
                 {!isSmallScreen && <ArrowGraphic />}
                 <div className="recipient-address-col">
                   <Typography variant="body1">
-                    <Trans>New sOHM deposit</Trans>
+                    <Trans>New sORCL deposit</Trans>
                   </Typography>
-                  <Typography variant="h6">{isWithdrawing ? 0 : depositAmount.toFixed(2)} sOHM</Typography>
+                  <Typography variant="h6">{isWithdrawing ? 0 : depositAmount.toFixed(2)} ORCLs</Typography>
                 </div>
               </div>
             ) : (
               <div className="edit-entry-section">
                 <div className="give-modal-alloc-tip">
                   <Typography variant="body1">
-                    <Trans>New sOHM Amount</Trans>
+                    <Trans>New sORCL Amount</Trans>
                   </Typography>
                   <InfoTooltip
-                    message={t`Your sOHM will be tansferred into the vault when you submit. You will need to approve the transaction and pay for gas fees.`}
+                    message={t`Your sORCL will be tansferred into the vault when you submit. You will need to approve the transaction and pay for gas fees.`}
                     children={null}
                   />
                 </div>
@@ -539,7 +539,7 @@ export function ManageDonationModal({
                   <FormHelperText>{isDepositAmountValidError}</FormHelperText>
                   <div className="give-staked-balance">
                     <Typography variant="body2" align="left">
-                      {`${t`Your current deposit is `} ${currentDepositAmount.toFixed(2)} sOHM`}
+                      {`${t`Your current deposit is `} ${currentDepositAmount.toFixed(2)} sORCL`}
                     </Typography>
                   </div>
                 </FormControl>
@@ -593,7 +593,7 @@ export function ManageDonationModal({
           ) : (
             <Button variant="contained" color="primary" disabled={!canSubmit()} onClick={handleEditSubmit}>
               <Typography variant="h6">
-                {txnButtonText(pendingTransactions, PENDING_TXN_EDIT_GIVE, t`Confirm New sOHM`)}
+                {txnButtonText(pendingTransactions, PENDING_TXN_EDIT_GIVE, t`Confirm New sORCL`)}
               </Typography>
             </Button>
           )}

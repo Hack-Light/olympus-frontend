@@ -1,18 +1,17 @@
 import "./Stake.scss";
 
 import { t, Trans } from "@lingui/macro";
-import { Accordion, AccordionDetails, AccordionSummary, Box, Divider, Grid, Typography, Zoom } from "@material-ui/core";
-import { ExpandMore } from "@material-ui/icons";
-import { Skeleton } from "@material-ui/lab";
+import { Box, Grid, Typography, Zoom } from "@material-ui/core";
+// import { ExpandMore } from "@material-ui/icons";
+// import { Skeleton } from "@material-ui/lab";
 import {
-  DataRow,
-  InputWrapper,
+  // DataRow,
+  Input,
+  // InputWrapper,
   Metric,
   MetricCollection,
   Paper,
   PrimaryButton,
-  Tab,
-  Tabs,
 } from "@olympusdao/component-library";
 import { ethers } from "ethers";
 import { ChangeEvent, ChangeEventHandler, memo, useCallback, useState } from "react";
@@ -30,13 +29,13 @@ import { error } from "../../slices/MessagesSlice";
 import { changeApproval, changeStake } from "../../slices/StakeThunk";
 import { changeApproval as changeGohmApproval } from "../../slices/WrapThunk";
 import { ConfirmDialog } from "./ConfirmDialog";
-import ExternalStakePool from "./ExternalStakePool";
+// import ExternalStakePool from "./ExternalStakePool";
 
-const Stake: React.FC = () => {
+const Ico: React.FC = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { provider, address, connect, networkId } = useWeb3Context();
-  usePathForNetwork({ pathName: "stake", networkID: networkId, history });
+  usePathForNetwork({ pathName: "ico", networkID: networkId, history });
 
   const [zoomed, setZoomed] = useState(false);
   const [view, setView] = useState(0);
@@ -181,7 +180,7 @@ const Stake: React.FC = () => {
     if (confirmation === false && action === "unstake" && gweiValue.gt(ethers.utils.parseUnits(sohmBalance, "gwei"))) {
       return dispatch(
         error(
-          t`You do not have enough sOHM to complete this transaction.  To unstake from gOHM, please toggle the sohm-gohm switch.`,
+          t`You do not have enough sORCL to complete this transaction.  To unstake from gORCL, please toggle the sorcl-gorcl switch.`,
         ),
       );
     }
@@ -312,25 +311,25 @@ const Stake: React.FC = () => {
   return (
     <div id="stake-view">
       <Zoom in={true} onEntered={() => setZoomed(true)}>
-        <Paper headerText={t`Single Stake (3, 3)`} subHeader={<RebaseTimer />}>
+        <Paper headerText={t`Oracle DAO ICO`} subHeader={<RebaseTimer />}>
           <Grid container direction="column" spacing={2}>
             <Grid item>
               <MetricCollection>
                 <Metric
                   className="stake-apy"
-                  label={t`APY`}
+                  label={t`Price per ORCL`}
                   metric={`${formattedTrimmedStakingAPY}%`}
                   isLoading={stakingAPY ? false : true}
                 />
                 <Metric
                   className="stake-tvl"
-                  label={t`Total Value Deposited`}
+                  label={t`Total ORCL Bought`}
                   metric={formattedStakingTVL}
                   isLoading={stakingTVL ? false : true}
                 />
                 <Metric
                   className="stake-index"
-                  label={t`Current Index`}
+                  label={t`ORCL Balance`}
                   metric={`${formattedCurrentIndex} sOHM`}
                   isLoading={currentIndex ? false : true}
                 />
@@ -343,90 +342,34 @@ const Stake: React.FC = () => {
                     <ConnectButton />
                   </div>
                   <Typography variant="h6">
-                    <Trans>Connect your wallet to stake OHM</Trans>
+                    <Trans>Connect your wallet to stake ORCL</Trans>
                   </Typography>
                 </div>
               ) : (
                 <>
                   <Box className="stake-action-area">
-                    <Tabs
-                      key={String(zoomed)}
-                      centered
-                      value={view}
-                      textColor="primary"
-                      indicatorColor="primary"
-                      className="stake-tab-buttons"
-                      onChange={changeView}
-                      aria-label="stake tabs"
-                      //hides the tab underline sliding animation in while <Zoom> is loading
-                      TabIndicatorProps={!zoomed ? { style: { display: "none" } } : undefined}
-                    >
-                      <Tab
-                        aria-label="stake-button"
-                        label={t({
-                          id: "do_stake",
-                          comment: "The action of staking (verb)",
-                        })}
-                      />
-                      <Tab aria-label="unstake-button" label={t`Unstake`} />
-                    </Tabs>
                     <Grid container className="stake-action-row">
+                      <Input
+                        id="amount-to-invest"
+                        label="BUSD TO INVEST"
+                        className="ohm-input"
+                        value={quantity}
+                        onChange={handleChangeQuantity}
+                        labelWidth={0}
+                        endString={t`BUSD`}
+                      />
+                      <Input
+                        id="orcl-to-recieve"
+                        label="ORCL YOU WILL RECIEVE"
+                        className="ohm-input"
+                        onChange={handleChangeQuantity}
+                        labelWidth={0}
+                        endString={t`ORCL`}
+                      />
                       {address && !isAllowanceDataLoading ? (
-                        (!hasAllowance("ohm") && view === 0) ||
-                        (!hasAllowance("sohm") && view === 1 && !confirmation) ||
-                        (!hasAllowance("gohm") && view === 1 && confirmation) ? (
-                          <>
-                            <Grid item xs={12} sm={8} className="stake-grid-item">
-                              <Box mt={"10px"}>
-                                <Typography variant="body1" className="stake-note" color="textSecondary">
-                                  {view === 0 ? (
-                                    <>
-                                      <Trans>First time staking</Trans> <b>OHM</b>?
-                                      <br />
-                                      <Trans>Please approve Oracle Dao to use your</Trans> <b>OHM</b>{" "}
-                                      <Trans>for staking</Trans>.
-                                    </>
-                                  ) : (
-                                    <>
-                                      <Trans>First time unstaking</Trans> <b>{confirmation ? "gOHM" : "sOHM"}</b>?
-                                      <br />
-                                      <Trans>Please approve Oracle Dao to use your</Trans>{" "}
-                                      <b>{confirmation ? "gOHM" : "sOHM"}</b> <Trans>for unstaking</Trans>.
-                                    </>
-                                  )}
-                                </Typography>
-                              </Box>
-                            </Grid>
-                            <Grid item xs={12} sm={4} className="stake-grid-item">
-                              <Box mt={1}>
-                                <PrimaryButton
-                                  fullWidth
-                                  className="stake-button"
-                                  disabled={stakeDisabled}
-                                  onClick={stakeOnClick}
-                                >
-                                  {stakeButtonText}
-                                </PrimaryButton>
-                              </Box>
-                            </Grid>
-                          </>
-                        ) : (
-                          <InputWrapper
-                            id="amount-input"
-                            type="number"
-                            label={t`Enter an amount`}
-                            value={quantity}
-                            onChange={handleChangeQuantity}
-                            labelWidth={0}
-                            endString={t`Max`}
-                            endStringOnClick={setMax}
-                            buttonText={stakeButtonText}
-                            buttonOnClick={stakeOnClick}
-                            disabled={stakeDisabled}
-                          />
-                        )
+                        <PrimaryButton style={{ width: "100%" }}>Buy Coin</PrimaryButton>
                       ) : (
-                        <Skeleton width="150px" />
+                        <PrimaryButton />
                       )}
                     </Grid>
                   </Box>
@@ -436,145 +379,14 @@ const Stake: React.FC = () => {
                     view={view}
                     onConfirm={setConfirmation}
                   />
-                  <div className="stake-user-data">
-                    <DataRow
-                      title={t`Unstaked Balance`}
-                      id="user-balance"
-                      balance={`${trim(Number(ohmBalance), 4)} OHM`}
-                      isLoading={isAppLoading}
-                    />
-                    <Accordion className="stake-accordion" square defaultExpanded>
-                      <AccordionSummary expandIcon={<ExpandMore className="stake-expand" />}>
-                        <DataRow
-                          title={t`Total Staked Balance`}
-                          id="user-staked-balance"
-                          balance={`${trimmedBalance} sOHM`}
-                          isLoading={isAppLoading}
-                        />
-                      </AccordionSummary>
-                      <AccordionDetails>
-                        <DataRow
-                          title={t`sOHM Balance`}
-                          balance={`${trim(Number(sohmBalance), 4)} sOHM`}
-                          indented
-                          isLoading={isAppLoading}
-                        />
-                        <DataRow
-                          title={`${t`gOHM Balance`}`}
-                          balance={`${trim(Number(gOhmBalance), 4)} gOHM`}
-                          indented
-                          isLoading={isAppLoading}
-                        />
-                        {Number(gOhmOnArbitrum) > 0.00009 && (
-                          <DataRow
-                            title={`${t`gOHM (Arbitrum)`}`}
-                            balance={`${trim(Number(gOhmOnArbitrum), 4)} gOHM`}
-                            indented
-                            {...{ isAppLoading }}
-                          />
-                        )}
-                        {Number(gOhmOnAvax) > 0.00009 && (
-                          <DataRow
-                            title={`${t`gOHM (Avalanche)`}`}
-                            balance={`${trim(Number(gOhmOnAvax), 4)} gOHM`}
-                            indented
-                            {...{ isAppLoading }}
-                          />
-                        )}
-                        {Number(gOhmOnPolygon) > 0.00009 && (
-                          <DataRow
-                            title={`${t`gOHM (Polygon)`}`}
-                            balance={`${trim(Number(gOhmOnPolygon), 4)} gOHM`}
-                            indented
-                            {...{ isAppLoading }}
-                          />
-                        )}
-                        {Number(gOhmOnFantom) > 0.00009 && (
-                          <DataRow
-                            title={`${t`gOHM (Fantom)`}`}
-                            balance={`${trim(Number(gOhmOnFantom), 4)} gOHM`}
-                            indented
-                            {...{ isAppLoading }}
-                          />
-                        )}
-                        {Number(gOhmOnTokemak) > 0.00009 && (
-                          <DataRow
-                            title={`${t`gOHM (Tokemak)`}`}
-                            balance={`${trim(Number(gOhmOnTokemak), 4)} gOHM`}
-                            indented
-                            isLoading={isAppLoading}
-                          />
-                        )}
-                        {Number(fgohmBalance) > 0.00009 && (
-                          <DataRow
-                            title={`${t`gOHM Balance in Fuse`}`}
-                            balance={`${trim(Number(fgohmBalance), 4)} gOHM`}
-                            indented
-                            isLoading={isAppLoading}
-                          />
-                        )}
-                        {Number(sohmV1Balance) > 0.00009 && (
-                          <DataRow
-                            title={`${t`sOHM Balance`} (v1)`}
-                            balance={`${trim(Number(sohmV1Balance), 4)} sOHM (v1)`}
-                            indented
-                            isLoading={isAppLoading}
-                          />
-                        )}
-                        {Number(wsohmBalance) > 0.00009 && (
-                          <DataRow
-                            title={`${t`wsOHM Balance`} (v1)`}
-                            balance={`${trim(Number(wsohmBalance), 4)} wsOHM (v1)`}
-                            isLoading={isAppLoading}
-                            indented
-                          />
-                        )}
-                        {Number(fiatDaowsohmBalance) > 0.00009 && (
-                          <DataRow
-                            title={t`wsOHM Balance in FiatDAO (v1)`}
-                            balance={`${trim(Number(fiatDaowsohmBalance), 4)} wsOHM (v1)`}
-                            isLoading={isAppLoading}
-                            indented
-                          />
-                        )}
-                        {Number(fsohmBalance) > 0.00009 && (
-                          <DataRow
-                            title={t`sOHM Balance in Fuse (v1)`}
-                            balance={`${trim(Number(fsohmBalance), 4)} sOHM (v1)`}
-                            indented
-                            isLoading={isAppLoading}
-                          />
-                        )}
-                      </AccordionDetails>
-                    </Accordion>
-                    <Divider color="secondary" />
-                    <DataRow
-                      title={t`Next Reward Amount`}
-                      balance={`${nextRewardValue} sOHM`}
-                      isLoading={isAppLoading}
-                    />
-                    <DataRow
-                      title={t`Next Reward Yield`}
-                      balance={`${stakingRebasePercentage}%`}
-                      isLoading={isAppLoading}
-                    />
-                    <DataRow
-                      title={t`ROI (5-Day Rate)`}
-                      balance={`${trim(Number(fiveDayRate) * 100, 4)}%`}
-                      isLoading={isAppLoading}
-                    />
-                  </div>
                 </>
               )}
             </div>
           </Grid>
         </Paper>
       </Zoom>
-      {/* NOTE (appleseed-olyzaps) olyzaps disabled until v2 contracts */}
-      {/* <ZapCta /> */}
-      <ExternalStakePool />
     </div>
   );
 };
 
-export default memo(Stake);
+export default memo(Ico);

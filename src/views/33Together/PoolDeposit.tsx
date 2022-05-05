@@ -105,7 +105,7 @@ export const PoolDeposit = (props: PoolDepositProps) => {
 
   useEffect(() => {
     props.setInfoTooltipMessage([
-      t`Deposit sOHM to win! Once deposited, you will receive a corresponding amount of 33T and be entered to win until your sOHM is withdrawn.`,
+      t`Deposit sORCL to win! Once deposited, you will receive a corresponding amount of 33T and be entered to win until your sORCL is withdrawn.`,
     ]);
   }, []);
 
@@ -130,7 +130,7 @@ export const PoolDeposit = (props: PoolDepositProps) => {
   let inputWrapperButtonText: string;
   if (address && hasAllowance()) {
     inputWrapperDisabled = isPendingTxn(pendingTransactions, "pool_deposit");
-    inputWrapperButtonText = txnButtonText(pendingTransactions, "pool_deposit", t`Deposit sOHM`);
+    inputWrapperButtonText = txnButtonText(pendingTransactions, "pool_deposit", t`Deposit sORCL`);
     inputWrapperOnClick = () => onDeposit("deposit");
   } else {
     inputWrapperDisabled = isPendingTxn(pendingTransactions, "approve_pool_together");
@@ -161,7 +161,7 @@ export const PoolDeposit = (props: PoolDepositProps) => {
             <Box padding={1}>
               <Typography variant="body2" style={{ color: "#33BB33" }}>
                 <Trans>
-                  Depositing {quantity} sOHM will increase odds of winning to 1 in {newOdds}
+                  Depositing {quantity} sORCL will increase odds of winning to 1 in {newOdds}
                 </Trans>
                 &nbsp;
               </Typography>
@@ -171,7 +171,7 @@ export const PoolDeposit = (props: PoolDepositProps) => {
           <div className={`stake-user-data`}>
             <DataRow
               title={t`Your Staked Balance (Depositable)`}
-              balance={`${new Intl.NumberFormat("en-US").format(parseFloat(sohmBalance))} sOHM`}
+              balance={`${new Intl.NumberFormat("en-US").format(parseFloat(sohmBalance))} sORCL`}
               isLoading={isAppLoading}
             />
           </div>

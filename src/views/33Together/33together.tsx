@@ -48,7 +48,7 @@ const PoolTogether = () => {
   // TODO (appleseed-33T): create a table for AwardHistory
   const [yourAwardHistory, setYourAwardHistory] = useState<Array<AwardItem>>([]);
   const [infoTooltipMessage, setInfoTooltipMessage] = useState<Array<string>>([
-    "Deposit sOHM to win! Once deposited, you will receive a corresponding amount of 33T and be entered to win until your sOHM is withdrawn.",
+    "Deposit sORCL to win! Once deposited, you will receive a corresponding amount of 33T and be entered to win until your sORCL is withdrawn.",
   ]);
   const isAccountLoading = useAppSelector(state => state.account.loading ?? true);
 
