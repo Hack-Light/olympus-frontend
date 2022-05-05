@@ -330,7 +330,7 @@ const Ico: React.FC = () => {
                 <Metric
                   className="stake-index"
                   label={t`ORCL Balance`}
-                  metric={`${formattedCurrentIndex} sOHM`}
+                  metric={`${formattedCurrentIndex} sORCL`}
                   isLoading={currentIndex ? false : true}
                 />
               </MetricCollection>
