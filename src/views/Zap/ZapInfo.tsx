@@ -143,8 +143,8 @@ const ZapInfo: React.FC<ZapInfoProps> = ({ tokens, address }) => {
             </Typography>
             <Typography align="left" variant="body2" className="oly-info-body">
               <Trans>
-                Staking is the primary value accrual strategy of Olympus. When you stake, you lock OHM and receive an
-                equal value of sOHM or gOHM.
+                Staking is the primary value accrual strategy of Oracle. When you stake, you lock ORCL and receive an
+                equal value of sORCL or gORCL.
               </Trans>
             </Typography>
           </Box>

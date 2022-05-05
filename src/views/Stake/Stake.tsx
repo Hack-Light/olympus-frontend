@@ -381,9 +381,9 @@ const Stake: React.FC = () => {
                                 <Typography variant="body1" className="stake-note" color="textSecondary">
                                   {view === 0 ? (
                                     <>
-                                      <Trans>First time staking</Trans> <b>OHM</b>?
+                                      <Trans>First time staking</Trans> <b>ORCL</b>?
                                       <br />
-                                      <Trans>Please approve Oracle Dao to use your</Trans> <b>OHM</b>{" "}
+                                      <Trans>Please approve Oracle Dao to use your</Trans> <b>ORCL</b>{" "}
                                       <Trans>for staking</Trans>.
                                     </>
                                   ) : (

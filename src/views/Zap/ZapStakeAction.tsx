@@ -365,7 +365,7 @@ const ZapStakeAction: React.FC = () => {
                       <ButtonBase onClick={handleOutputOpen}>
                         <Token name={outputToken ? "wsOHM" : "sOHM"} />
                         <Box width="10px" />
-                        <Typography>{outputToken ? "gOHM" : "sOHM"}</Typography>
+                        <Typography>{outputToken ? "gORCL" : "sORCL"}</Typography>
                         {downIcon}
                       </ButtonBase>
                     </Box>
@@ -407,7 +407,7 @@ const ZapStakeAction: React.FC = () => {
         </Typography>
         <Typography>
           {zapToken == null || outputToken == null ? "nil" : `${trim(exchangeRate, 4)} ${tokens[zapToken]?.symbol}`} = 1{" "}
-          {outputToken ? "gOHM" : "sOHM"}
+          {outputToken ? "gORCL" : "sORCL"}
         </Typography>
       </Box>
       <Box
@@ -422,7 +422,7 @@ const ZapStakeAction: React.FC = () => {
           <Trans>Minimum You Get</Trans>
         </Typography>
         <Typography>
-          {trim(Number(outputQuantity) * (1 - +customSlippage / 100), 2)} {outputToken ? "gOHM" : "sOHM"}
+          {trim(Number(outputQuantity) * (1 - +customSlippage / 100), 2)} {outputToken ? "gORCL" : "sORCL"}
         </Typography>
       </Box>
       {initialTokenAllowance ? (
